@@ -1,0 +1,47 @@
+
+    <!-- About & Education Section -->
+    <section id="about-education" class="py-5" style="background: linear-gradient(45deg, #03243f, #000000);;">
+        <div class="container">
+            <div class="row">
+                <!-- About Me Card -->
+                <div class="col-lg-6">
+                    <div class="card" id="about">
+                        <div class="card-body">
+                            <h2>About Me</h2>
+                            <p>Hello! I'm Mohamed Asick, a passionate Full Stack Developer with a strong foundation in both front-end and back-end technologies. I hold a degree in Computer Science and Engineering from Kings College of Engineering, where I developed a deep interest in building dynamic web applications and creating innovative solutions.</p>
+                            <p>My expertise includes HTML, CSS, JavaScript. I also have experience in database management with SQL, enabling me to efficiently handle data and optimize application performance. As an aspiring Data Analyst, I am keen on leveraging data-driven insights to enhance user experiences and make informed decisions.</p>
+                            <p>In my free time, I enjoy exploring advancements in generative AI and participating in open-source projects.</p>
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <!-- Education Details -->
+                <div class="col-lg-6">
+                    <div class="education-container">
+                        <h2>My Educational Details</h2>
+    
+                        <!-- Sub-box for Current Degree -->
+                        {% for education in education_info %}
+                            <div class="education-subbox">
+                                <strong>Current Degree:</strong>
+                                <p>{{ education.degree }} at {{ education.institution }}</p>
+                                <p>CGPA: {{ education.cgpa }} (from {{ education.start_year }} to {{ education.end_year }})</p>
+                                <p>{{ education.description }}</p>
+                            </div>
+                        {% endfor %}
+    
+                        <!-- Sub-box for School Education (12th Grade, 10th Grade) -->
+                        {% for school in school_education_info %}
+                            <div class="education-subbox">
+                                <strong>{{ school.grade }}:</strong>
+                                <p>{{ school.school }}</p>
+                                <p>Percentage: {{ school.percentage }}%</p>
+                                <p>Year: {{ school.year }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

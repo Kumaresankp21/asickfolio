@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>My Certificates</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body style="background:linear-gradient(45deg, #03243f, #000000);color: white;">
+  <!-- Assuming you're passing 'certificate_categories' context to the template -->
+{% for category in certificate_categories %}
+<div class="infosys">
+    <h1 class="training">{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+</div>
+
+<div class="certificates-container">
+    {% for certificate in category.certificates.all %}
+        <div class="certificate">
+            <img src="{{ certificate.image.url }}" alt="{{ certificate.title }}">
+            <p>{{ certificate.title }}</p>
+            <p>{{ certificate.description }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   
+<script src="demo.js"></script>
+<style>
+     /* Navbar Styling */
+nav.navbar {
+    background: linear-gradient(45deg, #03243f, #000000);
+    /* Gradient background */
+    border-bottom: 2px solid #007bff; /* Optional: Add a highlight at the bottom */
+}
+
+nav.navbar .navbar-brand,
+nav.navbar .nav-link {
+    color: #fff !important; /* White text */
+}
+
+nav.navbar .nav-link:hover {
+    color: #00aaff !important; /* Light blue hover effect */
+}
+
+/* Default style for navigation links */
+.nav-link {
+    position: relative; /* Allows us to position the underline */
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Add underline animation */
+.nav-link::after {
+    content: ""; /* Pseudo-element for the underline */
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Space between the link and the underline */
+    width: 0%; /* Start with no underline */
+    height: 2px;
+    background-color: #00aaff; /* Underline color */
+    transition: width 0.4s ease; /* Smoothly grow the underline */
+}
+
+/* On hover or active state */
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%; /* Full-width underline */
+}
+
+/* Transition color for active links */
+.nav-link.active {
+    color: #00aaff !important; /* Highlighted color */
+}
+
+/* font for nav bar mohmaedasick */
+.navbar-brand {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1.8rem;
+    color: #333;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+@font-face {
+    font-family: 'Showcard Gothic';
+    src: url('fonts/ShowcardGothic.woff2') format('woff2'),
+         url('fonts/ShowcardGothic.woff') format('woff'),
+         url('fonts/ShowcardGothic.ttf') format('truetype');
+}
+
+.navbar-brand {
+    font-family: 'Showcard Gothic', sans-serif;
+}
+/* font for nav bar mohmaedasick */
+
+
+
+
+/* Home Section Styling */
+#home {
+    background: linear-gradient(45deg, #03243f, #000000);
+    /* Gradient background */
+    color: #fff; /* White text */
+    padding: 50px 0;
+}
+
+#home .display-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#home .lead {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+#home img {
+    border: 5px solid #fff; /* White border around the image */
+    border-radius: 50%; /* Make it circular */
+    max-width: 80%; /* Control the image size */
+}
+
+/* Resume Button Styling */
+.resume-button {
+    display: inline-flex;
+    align-items: center; /* Align text and icon vertically */
+    justify-content: center; /* Center content */
+    background-color: #d8e4f0; /* Button background color */
+    color: rgb(0, 0, 0); /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: fit-content; /* Fit content width */
+    gap: 8px; /* Space between text and icon */
+}
+
+.resume-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.resume-button i {
+    font-size: 18px; /* Size of the icon */
+}
+
+/* For small screens: Adjust padding */
+@media (max-width: 576px) {
+    .resume-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+
+/* Light Mode Styling */
+body.light-mode {
+    background-color: #fff;
+    /* White background */
+    color: #000;
+    /* Black text */
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #000;
+    /* Black background */
+    color: #fff;
+    /* White text */
+}
+
+/* Transition for Smooth Effect */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Mobile Menu Styling */
+@media (max-width: 768px) {
+    #navbarNav {
+        background-color: #000;
+        /* Black background */
+        text-align: center;
+    }
+
+    #menu-icon {
+        display: block;
+        color: white;
+    }
+}
+
+/* Initial off-position (slightly tilted or shifted) */
+
+/* Flip Card Container */
+/* Flip Card Container */
+.flip-card {
+    width: 500px;
+    height: 500px;
+    perspective: 1000px;
+    margin: auto;
+}
+
+/* Inner Container with Flip Effect */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Front and Back Sides */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Front Side: Image */
+.flip-card-front img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Info Icon (Front Side) */
+.info-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Back Side: Details */
+.flip-card-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto; /* Allow scrolling for large content */
+}
+
+/* Back Content */
+.back-content {
+    text-align: center;
+    max-width: 90%;
+    font-size: 1rem; /* Default font size */
+}
+
+/* Reduce padding and font size on smaller screens */
+.back-content p {
+    margin: 5px 0;
+}
+
+/* Return Icon (Back Side) */
+.return-icon {
+    margin-top: 20px;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.return-icon:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Flip on Click */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* Animation Keyframes */
+/* Keyframes for Cool Animation */
+@keyframes coolestAnimation {
+    0% {
+        transform: translateY(-100%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Cool Animated Heading Style */
+.cool-animated-heading {
+    font-size: 2rem; /* Adjust font size as needed */
+    color: #0f64ec; /* Gold color for added style */
+    text-shadow: 0 0 10px #042546, 0 0 20px #75a9f1; /* Glowing effect */
+    animation: coolestAnimation 1.5s ease-out; /* Duration and easing */
+    margin-bottom: 20px; /* Space below heading */
+    text-align: center; /* Center align the text */
+    letter-spacing: 2px; /* Adds spacing between letters for style */
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .flip-card {
+        width: 250px;
+        height: 300px; /* Reduced height for smaller screens */
+    }
+
+    .flip-card-back {
+        padding: 10px;
+    }
+
+    .back-content {
+        font-size: 0.85rem; /* Reduce font size */
+    }
+
+    .info-icon, .return-icon {
+        font-size: 16px;
+        padding: 6px;
+    }
+}
+
+
+
+/* About Me Card Styling */
+#about {
+    background: linear-gradient(45deg, #03243f, #000000);
+    /* Gradient background */
+    border: 2px solid #007bff;
+    /* Blue border */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Shadow for depth */
+    color: silver;
+    /* Silver text */
+}
+
+/* About Me Heading */
+#about h2 {
+    color: #00aaff;
+    /* Light blue heading text */
+    font-family: 'Poppins', sans-serif;
+    /* Stylish font */
+    text-transform: uppercase;
+    /* Uppercase for emphasis */
+    letter-spacing: 2px;
+}
+
+/* About Me Paragraphs */
+#about p {
+    color: silver;
+    /* Silver text */
+    line-height: 1.6;
+    /* Better readability */
+    font-size: 1.1rem;
+    /* Slightly larger text */
+}
+
+/* Hover Effect for About Me Section */
+#about:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    /* Increase shadow depth on hover */
+    transform: scale(1.02);
+    /* Slightly scale up on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+
+/* Styling for the full outer box */
+.education-container {
+    background: linear-gradient(45deg, #03243f, #000000);
+    /* Gradient background */
+    border: 2px solid #007bff;
+    /* Blue border for highlight */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Padding around the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow for depth */
+    color: silver;
+    /* Silver text */
+}
+
+/* Styling for each sub-box inside the education container */
+.education-subbox {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Semi-transparent white for sub-boxes */
+    border: 1px solid #007bff;
+    /* Blue border around sub-boxes */
+    border-radius: 8px;
+    /* Rounded corners for sub-boxes */
+    padding: 15px;
+    /* Padding inside the sub-boxes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for each sub-box */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    /* Smooth transition */
+    color: silver;
+    /* Silver text */
+}
+
+/* Hover effect for each sub-box */
+.education-subbox:hover {
+    transform: scale(1.05);
+    /* Slightly scale up */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    /* Increase shadow depth */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Slightly brighter background on hover */
+}
+
+/* Adjust margin between sub-boxes */
+.education-subbox:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+/* Heading Styling */
+.education-container h2 {
+    color: #00aaff;
+    /* Highlight heading text in a light blue */
+    font-family: 'Poppins', sans-serif;
+    /* Stylish font */
+    text-transform: uppercase;
+    /* Uppercase for emphasis */
+    letter-spacing: 2px;
+}
+
+
+/* Basic styling for the skill images */
+/* Outer box for the Skills section */
+/* Outer box for the Skills section */
+/* Outer box for the Skills section */
+#skills {
+    background: linear-gradient(45deg, #03243f, #000000); /* Same gradient as other sections */
+     /* Rounded corners for the section */
+    padding: 20px; /* Inner padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+    background-clip: padding-box; /* Ensures the gradient stops at the border edge */
+    color: white; /* Text inside will be white for better contrast */
+}
+
+/* Add a wrapper to keep uniform spacing */
+#skills .container {
+    background: inherit; /* Inherit the gradient background */
+    padding: 20px;
+    border-radius: 15px; /* Maintain the border radius for consistency */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow effect */
+    border: 2px solid #007bff; /* Consistent border color */
+}
+
+
+/* Style for each skill card */
+.skill-image {
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    object-fit: cover; /* Cover the image area without distortion */
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    border-radius: 10px; /* Rounded corners for the images */
+    background-color: white; /* Ensure a white background for consistency */
+}
+
+/* Hover effect for the skill images */
+.skill-image:hover {
+    transform: scale(1.2) rotate(10deg); /* Slight zoom-in and rotation */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+/* Align text and style it */
+#skills p {
+    color: white; /* Text color for better contrast */
+    font-weight: bold; /* Bold the skill names */
+    margin-top: 10px; /* Add space above the text */
+}
+
+/* Space and alignment between skill images */
+#skills .col-6 {
+    margin-bottom: 20px; /* Space between rows of images */
+}
+
+/* Center and highlight the section title */
+#skills h2 {
+    color: #00aaff; /* Blue color for the title */
+    
+    margin-bottom: 30px; /* Add space below the title */
+}
+
+
+
+/* Styling for the projects heading box */
+/* Projects Section Heading */
+.projects-heading {
+    background: linear-gradient(45deg, #03243f, #000000); /* Consistent gradient background */
+    color: white; /* Text color for contrast */
+    border: 2px solid #007bff; /* Border color matches the gradient theme */
+    border-radius: 15px; /* Rounded corners for uniformity */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow for depth */
+    padding: 20px; /* Consistent spacing */
+    text-align: center;
+}
+
+/* Hover Gradient Cards */
+.hover-gradient-card {
+    background: linear-gradient(45deg, #03243f, #000000); /* Default neutral background */
+    color: white; /* Text color for readability */
+    border: 2px solid #dee5ed;  /* Transparent border to accommodate hover effect */
+    border-radius: 15px; /* Rounded corners for consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.5s ease;
+}
+
+/* Hover Effect for Cards */
+.hover-gradient-card:hover {
+    background: linear-gradient(45deg, #03243f, #000000); /* Gradient background on hover */
+    color: white; /* Text color changes to contrast the gradient */
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Stronger shadow for hover state */
+    border: 2px solid #007bff;  /* Border color matches the hover gradient */
+}
+
+/* Links within the hover cards */
+.hover-gradient-card a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Ensure the text color inherits the hover state */
+    transition: color 0.3s ease; /* Smooth text color transition */
+}
+
+.hover-gradient-card:hover a {
+    color: white; /* Ensures link text color matches the hover state */
+}
+
+
+
+
+/*social icons*/
+/* Social Icons Styling */
+/* General Section Styling */
+/* Contact Section */
+#contact-section {
+    background: linear-gradient(45deg, #03243f, #000000); /* Gradient background */
+    padding: 50px 0;
+    color: white; /* Default text color */
+    border-radius: 10px; /* Rounded edges for the section */
+    border: 2px solid #007bff; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Depth-enhancing shadow */
+    font-weight: bold; /* Make all text bold */
+}
+
+/* Social Icons Styling */
+.social-icons a {
+    color: white; /* Default white icon color */
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s, transform 0.3s; /* Smooth transition */
+    display: inline-block; /* Icon treated as block element */
+}
+
+/* No margin-right for the last icon */
+.social-icons a:last-child {
+    margin-right: 0;
+}
+
+/* Instagram Hover Effect */
+.social-icons a[href="https://www.instagram.com/cozitzasick_/"]:hover {
+    color: transparent; /* Transparent to allow gradient */
+    background: linear-gradient(45deg, #e1306c, #f5a623, #8e44ad); /* Instagram gradient */
+    -webkit-background-clip: text; /* Gradient on text for WebKit */
+    background-clip: text; /* Gradient clip for other browsers */
+    transform: scale(1.2); /* Slight enlargement */
+}
+
+/* LinkedIn Hover Effect */
+.social-icons a[href="https://www.linkedin.com/in/mohamed-asick-a-54580a257"]:hover {
+    color: #0077b5; /* LinkedIn blue */
+    transform: scale(1.2); /* Slight enlargement */
+}
+
+/* GitHub Hover Effect */
+.social-icons a[href="https://github.com/mohamedasick87"]:hover {
+    color: #ffffff; /* Pure white */
+    transform: scale(1.2); /* Slight enlargement */
+}
+
+/* Phone Hover Effect */
+.social-icons a[href="#"]:hover {
+    color: #00d8ff; /* Cyan for the phone icon */
+    transform: scale(1.2); /* Slight enlargement */
+}
+
+/* Popup Styling */
+/* Popup Styling */
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+}
+
+/* Show Popup with Scale-Up Animation */
+.popup.show {
+    display: block; /* Make the popup visible */
+    animation: fadeIn 0.3s ease-in-out; /* Background fade-in animation */
+}
+
+/* Popup Content Styling */
+.popup-content {
+    background-color: #03243f; /* Dark theme */
+    color: white; /* White text for readability */
+    padding: 20px;
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Start slightly smaller */
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    animation: scaleUp 0.5s ease-in-out forwards; /* Apply scale-up animation */
+}
+
+/* Close Button */
+.close {
+    color: #ffffff; /* White close button */
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ff0000; /* Red hover effect for close button */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8); /* Start smaller */
+        opacity: 0; /* Start invisible */
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.1); /* Slight overscale for bounce effect */
+        opacity: 1; /* Fully visible */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1); /* Back to normal size */
+    }
+}
+
+
+
+/* Style for the welcome message */
+    /* Welcome Screen */
+/* Fullscreen Welcome Screen */
+/* Fullscreen Welcome Screen */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Welcome container to position moon and text */
+.welcome-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Moon Animation */
+.moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #fdfdfd, #aaaaaa);
+    border-radius: 50%;
+    animation: moonMove 4s linear forwards;
+    z-index: 2;
+}
+
+/* Move the moon only across the text */
+@keyframes moonMove {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Welcome message styling */
+.welcome-message {
+    display: flex;
+    font-size: 4rem; /* Larger font size for impact */
+    color: silver;
+    letter-spacing: 8px; /* Space between letters for better readability */
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif; /* Cool, modern font */
+    position: relative;
+}
+
+/* Add a glowing effect to the text */
+.welcome-message span {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 0px 0px 10px #ff3434, 0px 0px 20px #1c71e8;
+}
+
+/* Fade-out animation for the moon */
+@keyframes moonFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/*welcome screen ends*/
+
+
+
+
+/*certificate boxxx starting*/
+/* Heading Styling */
+.certificates-heading {
+    background: linear-gradient(45deg, #03243f, #000000); /* Your desired gradient */
+    color: white; /* White text for contrast */
+    padding: 15px;
+    border-radius: 15px; /* Smooth rounded edges */
+    border: 2px solid #007bff; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Depth-enhancing shadow */
+    display: inline-block; /* Centered and boxed heading */
+}
+
+/* Certificates Container Styling */
+.certificates-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    justify-content: center; /* Centers the certificates */
+    gap: 20px; /* Space between each certificate */
+    padding: 10px; /* Padding around the container */
+}
+
+/* Individual Certificate Styling */
+.certificate {
+    background-color: #03243f; /* Base color */
+    color: white; /* Text color */
+    border: 3px solid #007bff; /* Outer box border matching background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.5s ease;
+    text-align: center;
+    padding: 20px; /* Space inside each certificate */
+    max-width: 300px; /* Maximum width for a certificate */
+    flex: 1 1 300px; /* Flexible layout */
+}
+
+/* Certificate Hover Effect */
+.certificate:hover {
+    background: linear-gradient(45deg, #03243f, #000000); /* Gradient hover */
+    color: white; /* Ensure consistent white text */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    border: 3px solid #ffffff; /* Optional white border on hover */
+}
+
+/* Certificate Image Styling */
+.certificate-image {
+    width: 100%; /* Full width of the card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Smooth edges for the image */
+    margin-bottom: 10px; /* Spacing below the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow around image */
+    transition: transform 0.3s ease-in-out; /* Smooth scaling on hover */
+}
+
+/* Image Hover Effect */
+.certificate-image:hover {
+    transform: scale(1.1); /* Slight zoom-in for interactivity */
+}
+
+
+.certificate img {
+    width: 100%;
+    /* Make image responsive */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 10px;
+    /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .certificate {
+        flex: 1 1 90%;
+        /* Allows certificates to take up more space on small screens */
+        max-width: 90%;
+        /* Set max width to 90% for smaller screens */
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+.new-box {
+    background: linear-gradient(45deg, #03243f, #000000);
+    /* Light background color */
+    border: 2px solid #151414;
+    /* Light border */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 10px;
+    /* Padding for content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    margin-top: 20px;
+    /* Space above the box */
+    text-align: center;
+    /* Center text */
+}
+
+.new-box h3 {
+    margin-bottom: 10px;
+    /* Space below the heading */
+}
+
+.button {
+    display: inline-block;
+    background-color: #44a4e3; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 10px; /* Button padding */
+    border-radius: 8px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    font-size: 2rem; /* Increased font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    animation: slideIn 1s ease-out, pulse 2s infinite; /* Apply animations */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button:hover {
+    background-color: #6ba8ce;
+    /* Change color on hover */
+}
+
+/* Keyframes for Slide-In Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(68, 164, 227, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(68, 164, 227, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(68, 164, 227, 0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .training {
+        font-size: 1.5rem; /* Reduce font size on smaller screens */
+        padding: 12px 25px; /* Adjust padding */
+    }
+}
+
+
+.certificate {
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    /* Position relative for text overlay */
+    overflow: hidden;
+    /* Hide overflow for scaling effect */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+}
+
+.certificate img {
+    width: 100%;
+    /* Make the image responsive */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    /* Transition for image */
+}
+
+.certificate h4 {
+    opacity: 0;
+    /* Initially hidden */
+    position: absolute;
+    /* Position absolute to center over image */
+    bottom: 10%;
+    /* Position text at the bottom */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center text */
+    color: white;
+    /* Change to white for contrast */
+    background: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent background */
+    padding: 5px 10px;
+    /* Some padding */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for opacity */
+}
+
+/* Hover effects */
+.certificate:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge the certificate */
+}
+
+.certificate:hover img {
+    transform: scale(1.1);
+    /* Slightly enlarge the image */
+}
+
+.certificate:hover h4 {
+    opacity: 1;
+    /* Fade in text on hover */
+}
+
+/*Infosys springboard start*/
+
+.infosys {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    
+     /* Optional background for visual contrast */
+    overflow: hidden; /* Ensures content doesn't overflow */
+}
+
+/* Initial style for the h1 */
+/* Container Styling */
+.infosys {
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+}
+
+/* Training Heading Styling */
+.training {
+    display: inline-block;
+    background-color: #44a4e3; /* Button background color */
+    color: white; /* Button text color */
+    padding: 15px 30px; /* Button padding */
+    border-radius: 8px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    font-size: 2rem; /* Increased font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    animation: slideIn 1s ease-out, pulse 2s infinite; /* Apply animations */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover Effects */
+.training:hover {
+    background-color: #357ABD; /* Darker background on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Keyframes for Slide-In Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(68, 164, 227, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(68, 164, 227, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(68, 164, 227, 0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .training {
+        font-size: 1.5rem; /* Reduce font size on smaller screens */
+        padding: 12px 25px; /* Adjust padding */
+    }
+}
+
+
+
+/*certificate boxxx end*/
+
+
+
+.text-gradient {
+   background: linear-gradient(to right, #03265c, #1a57f1); /* Example gradient */
+   -webkit-background-clip: text; /* For Safari and older browsers */
+   background-clip: text; /* Standard property */
+   color: transparent; /* Hide the text color */
+   font-size: 3rem; /* Increase font size for better visibility */
+   display: inline-block; /* Needed for animation to work */
+   animation: gradient-animation 3s ease-in-out infinite; /* Animation applied */
+}
+
+@keyframes gradient-animation {
+   0%, 100% {
+       background-position: 0% 50%;
+   }
+   50% {
+       background-position: 100% 50%;
+   }
+}
+
+/* Optional: Adding a bounce effect */
+.animated-text {
+   animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {
+       transform: translateY(0);
+   }
+   40% {
+       transform: translateY(-10px);
+   }
+   60% {
+       transform: translateY(-5px);
+   }
+}
+
+
+
+
+
+
+/* For WebKit browsers (Chrome, Safari) */
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+   width: 12px; /* Width of the scrollbar */
+   height: 12px; /* Height of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Track color */
+   border-radius: 10px; /* Rounded edges */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #888; /* Handle color */
+   border-radius: 10px; /* Rounded edges */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #555; /* Darker handle color on hover */
+}
+
+/* Firefox */
+.scrollbar {
+   scrollbar-width: thin; /* Use 'auto' or 'thin' */
+   scrollbar-color: #888 #f1f1f1; /* Handle color and track color */
+}
+
+
+</style>
+</body>
+</html>

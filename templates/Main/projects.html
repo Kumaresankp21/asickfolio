@@ -1,0 +1,57 @@
+<!-- Projects Section -->
+<section id="projects" class="py-5" style="background: linear-gradient(45deg, #03243f, #000000);">
+    <div class="container" style="color: black;">
+        <!-- Box for the heading -->
+        <div class="projects-heading bg-light p-4 rounded mb-4 text-center">
+            <h2>My Projects</h2>
+        </div>
+
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-lg-6">
+                    <div class="card mb-4 hover-gradient-card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <ul>
+                                <li>{{ project.description }}</li>
+                                {% if project.technologies %}
+                                    <li><strong>Technologies Used:</strong> {{ project.technologies }}</li>
+                                {% endif %}
+                            </ul>
+                            {% if project.link %}
+                                <a href="{{ project.link }}" target="_blank" class="btn btn-primary">View Project</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <center>
+            <a href="https://interniq.live" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="card mb-4 hover-gradient-card">
+                    <div class="card-body">
+                        <h3 class="card-title">InternIQ Platform</h3>
+                        <p>A platform to connect interns with companies, providing personalized candidate recommendations.</p>
+                    </div>
+                </div>
+            </a>
+        
+            <a href="/certificates" style="text-decoration: none; color: inherit;">
+                <section id="certificates" class="py-5">
+                    <div class="container">
+                        <h2 class="text-center certificates-heading">Certificates</h2>
+                        <div class="certificates-container">
+                            <div class="certificate hover-gradient-card">
+                                {% load static %}
+
+                            <img src="{% static '/certiilogo.jpg' %}" alt="Certificate 1" class="certificate-image">  
+                                <h4>View all Certificates</h4>
+                                <h5>Click above to view all Certificates</h5>
+                            </div>
+                            <!-- Add more certificate entries as needed -->
+                        </div>
+                    </div>
+                </section>
+            </a>
+            
+        </center>

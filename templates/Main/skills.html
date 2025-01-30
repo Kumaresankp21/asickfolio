@@ -1,0 +1,14 @@
+<!-- Skills Section -->
+<section id="skills" class="py-5 bg-light">
+    <div class="container" style="color: black;">
+        <h2 class="text-center">Skills</h2>
+        <div class="row text-center justify-content-center">
+            {% for skill in skills %}
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="{{ skill.image.url }}" alt="{{ skill.name }}" class="skill-image img-fluid">
+                    <p>{{ skill.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
